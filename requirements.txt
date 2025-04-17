@@ -1,8 +1,8 @@
 Flask==2.3.2
 Flask-Cors==4.0.0
 Flask-SQLAlchemy==3.1.1
-opencv-python==4.7.0.72       # ← Slightly older, works well with TensorFlow & numpy
-numpy==1.23.1                 # ← Compatible with both OpenCV and TensorFlow
+opencv-python==4.7.0.72
+numpy==1.23.5               # ✅ Prebuilt binary available!
 scipy==1.11.4
 tensorflow==2.12.0
 deepface==0.0.79
