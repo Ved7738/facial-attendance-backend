@@ -1,8 +1,8 @@
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
+
 from models import db
 
 def create_app():
@@ -25,9 +25,7 @@ def create_app():
     from routes.recognize import bp as recognize_bp
     from routes.add_employee import bp as add_employee_bp
     from routes.embeddings import bp as embeddings_bp
-    from routes.employees import bp as employees_bp
 
-    app.register_blueprint(employees_bp)
     app.register_blueprint(add_employee_bp)
     app.register_blueprint(recognize_bp)
     app.register_blueprint(attendance_bp)
@@ -38,8 +36,11 @@ def create_app():
 
     return app
 
+# ✅ Make app available to gunicorn (Render looks for this)
+app = create_app()
+
+# Optional block to run locally
 if __name__ == '__main__':
-    app = create_app()
     with app.app_context():
         os.makedirs(app.instance_path, exist_ok=True)
         db_file = os.path.join(app.instance_path, 'database.db')
