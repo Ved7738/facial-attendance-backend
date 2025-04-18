@@ -15,7 +15,7 @@ def create_app():
     app.config['SESSION_COOKIE_SAMESITE'] = 'None'
     app.config['SESSION_COOKIE_SECURE'] = True
 
-    CORS(app, supports_credentials=True)
+    CORS(app, supports_credentials=True, origins=["https://facial-attendance-frontend.vercel.app"])
     db.init_app(app)
 
     from routes.attendance import bp as attendance_bp
